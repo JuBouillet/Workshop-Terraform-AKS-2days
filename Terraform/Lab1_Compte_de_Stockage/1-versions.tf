@@ -8,7 +8,7 @@
 #                                                                                                   |_|                                         
 
 terraform {
-  required_version = "= 1.1.7"
+  # required_version = "= 1.1.7"
   required_providers {
     azurerm = {
       # The "hashicorp" namespace is the new home for the HashiCorp-maintained
@@ -21,13 +21,16 @@ terraform {
       # Check Changelog : https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md
       source  = "hashicorp/azurerm"
       version = "= 2.98.0"
+
     }
 
 }
 }
 
 # Configure the Azure Provider
-provider "azurerm" {
-  # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
-  features {}
+provider azurerm {
+    tenant_id = "4c953047-dc2c-45a1-a0e2-fa113c905fe6"
+    subscription_id = "34921382-2dee-483a-9c2b-f632eb467dba"
+    features {
+    }
 }

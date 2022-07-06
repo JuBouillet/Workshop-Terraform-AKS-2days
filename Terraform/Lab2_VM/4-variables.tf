@@ -44,3 +44,6 @@ variable "vmUser" {
     default = "adminuser"  
 }
 
+variable "test" {
+  type = string
+}

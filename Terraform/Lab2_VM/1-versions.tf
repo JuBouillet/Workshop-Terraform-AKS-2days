@@ -8,10 +8,10 @@
 #                                                                                                   |_|                                         
 
 terraform {
-  required_version = ">= 1.1.7"
+  # required_version = ">= 1.1.7"
   backend "azurerm" {
-    resource_group_name  = "RG-AKSCluster"     # mettre ici le nom du resource group de vos ressource
-    storage_account_name = "terraformstan"  # /!\ mettre le nom du compte de stockage créer dans le lab 1
+    resource_group_name  = "RG-AKSClusterJBO"     # mettre ici le nom du resource group de vos ressource
+    storage_account_name = "terraformjbolab"  # /!\ mettre le nom du compte de stockage créer dans le lab 1
     container_name       = "tfstate"
     key                  = "vm.terraform.tfstate" 
   }
@@ -37,4 +37,5 @@ terraform {
 provider "azurerm" {
   # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
   features {}
+  client_id = var.test
 }

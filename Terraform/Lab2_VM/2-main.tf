@@ -26,6 +26,7 @@ resource "azurerm_network_interface" "terra_nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.terra_subnet.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.vm_pub_ip.id 
   }
 }
 
@@ -57,3 +58,12 @@ resource "azurerm_linux_virtual_machine" "terra_vm" {
   }
 }
 
+resource "azurerm_public_ip" "vm_pub_ip" {
+  name                = "jbolabpubip"
+  resource_group_name = var.resourceGroupName
+  location            = var.azureRegion
+  allocation_method   = "Dynamic"
+  tags = {
+    environment = "Production"
+  }
+}
